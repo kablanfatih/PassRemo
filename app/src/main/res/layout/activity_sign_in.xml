@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECD672"
+    android:orientation="vertical"
+    tools:context=".SignIn"
+    tools:layout_editor_absoluteY="25dp">
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="67dp"
+        android:layout_marginTop="66dp"
+        android:background="#ECD672"
+        android:text="Vazgeç"
+        android:textColor="#348781"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgetPassword" />
+
+    <TextView
+        android:id="@+id/forgetPassword"
+        style="@style/Widget.AppCompat.TextView.SpinnerItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="181dp"
+        android:layout_marginTop="181dp"
+        android:text="Şİfreni mi Unuttun?"
+        android:textColor="#348781"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/userPass" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:text="Giriş Sayfası"
+        android:textColor="#348781"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/userEmail"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:hint="E-Posta"
+        android:inputType="textEmailAddress"
+        android:textColor="#348781"
+        android:textColorHint="#348781"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <EditText
+        android:id="@+id/userPass"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:hint="Parola"
+        android:inputType="textPassword"
+        android:textColor="#348781"
+        android:textColorHint="#348781"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userEmail" />
+
+    <Button
+        android:id="@+id/signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:background="#ECD672"
+        android:text="Giriş"
+        android:textColor="#348781"
+        app:layout_constraintBottom_toTopOf="@+id/forgetPassword"
+        app:layout_constraintStart_toStartOf="@+id/forgetPassword" />
+
+    <CheckBox
+        android:id="@+id/rememberMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:background="#ECD672"
+        android:shadowColor="#348781"
+        android:text="Beni Hatırla"
+        android:textColor="#348781"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userPass" />
+
+</android.support.constraint.ConstraintLayout>
