@@ -3,6 +3,7 @@ package com.kablanfatih.passremo;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.CountDownTimer;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +32,9 @@ public class UserActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser user;
     RecyclerView recyclerView;
+    FloatingActionButton addButton;
+    LinearLayout passwordInfo;
+    Button savePassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,7 @@ public class UserActivity extends AppCompatActivity {
 
         createRecyclerView();
         define();
+        createPassword();
 
         if (user == null) {
 
@@ -51,6 +57,10 @@ public class UserActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
+        addButton = (FloatingActionButton) findViewById(R.id.addButton);
+        passwordInfo = (LinearLayout) findViewById(R.id.password_info);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        savePassword = (Button) findViewById(R.id.savepassword);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -124,6 +134,32 @@ public class UserActivity extends AppCompatActivity {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+      }
+
+      private void createPassword(){
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                recyclerView.setVisibility(View.INVISIBLE);
+                passwordInfo.setVisibility(View.VISIBLE);
+
+                Toast.makeText(getApplicationContext(),"deneme",Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        savePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                passwordInfo.setVisibility(View.INVISIBLE);
+                recyclerView.setVisibility(View.VISIBLE);
+                Toast.makeText(getApplicationContext(),"Kaydedildi",Toast.LENGTH_LONG).show();
+
+            }
+        });
       }
 /*
     @Override
