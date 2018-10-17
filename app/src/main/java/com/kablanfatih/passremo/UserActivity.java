@@ -6,6 +6,8 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -27,12 +29,14 @@ public class UserActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     FirebaseUser user;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
+        createRecyclerView();
         define();
 
         if (user == null) {
@@ -108,6 +112,19 @@ public class UserActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
 
     }
+
+    private  void createRecyclerView(){
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+
+        ListAdapter listAdapter = new ListAdapter(this,ListPassword.getData());
+        recyclerView.setAdapter(listAdapter);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+      }
 /*
     @Override
     protected void onStop() {
