@@ -34,7 +34,7 @@ public class UserActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton addButton;
     LinearLayout passwordInfo;
-    Button savePassword;
+    Button savePassword, backList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,7 @@ public class UserActivity extends AppCompatActivity {
         passwordInfo = (LinearLayout) findViewById(R.id.password_info);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         savePassword = (Button) findViewById(R.id.savepassword);
+        backList = (Button) findViewById(R.id.backlist);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -123,20 +124,20 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
-    private  void createRecyclerView(){
+    private void createRecyclerView() {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 
-        ListAdapter listAdapter = new ListAdapter(this,ListPassword.getData());
+        ListAdapter listAdapter = new ListAdapter(this, ListPassword.getData());
         recyclerView.setAdapter(listAdapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-      }
+    }
 
-      private void createPassword(){
+    private void createPassword() {
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,7 +146,7 @@ public class UserActivity extends AppCompatActivity {
                 recyclerView.setVisibility(View.INVISIBLE);
                 passwordInfo.setVisibility(View.VISIBLE);
 
-                Toast.makeText(getApplicationContext(),"deneme",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "deneme", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -156,11 +157,20 @@ public class UserActivity extends AppCompatActivity {
 
                 passwordInfo.setVisibility(View.INVISIBLE);
                 recyclerView.setVisibility(View.VISIBLE);
-                Toast.makeText(getApplicationContext(),"Kaydedildi",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Kaydedildi", Toast.LENGTH_LONG).show();
 
             }
         });
-      }
+
+        backList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                passwordInfo.setVisibility(View.INVISIBLE);
+                recyclerView.setVisibility(View.VISIBLE);
+            }
+        });
+    }
 /*
     @Override
     protected void onStop() {

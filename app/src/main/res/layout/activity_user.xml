@@ -51,6 +51,13 @@
             android:layout_height="wrap_content"
             android:text="Kaydet"
             android:layout_marginLeft="50dp"/>
+        <Button
+            android:id="@+id/backlist"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Vazgeç"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"/>
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
