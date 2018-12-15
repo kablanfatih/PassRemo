@@ -13,36 +13,32 @@
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="67dp"
-        android:layout_marginTop="66dp"
+        android:layout_marginBottom="48dp"
         android:background="#ECD672"
         android:text="Vazgeç"
         android:textColor="#348781"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgetPassword" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/forgetPassword"
         style="@style/Widget.AppCompat.TextView.SpinnerItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="181dp"
-        android:layout_marginTop="181dp"
+        android:layout_marginTop="37dp"
         android:text="Şİfreni mi Unuttun?"
         android:textColor="#348781"
         android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/userPass" />
+        app:layout_constraintTop_toBottomOf="@+id/register" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="16dp"
         android:text="Giriş Sayfası"
         android:textColor="#348781"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,52 +49,61 @@
         android:id="@+id/userEmail"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
+        android:layout_marginBottom="29dp"
         android:hint="E-Posta"
         android:inputType="textEmailAddress"
         android:textColor="#348781"
         android:textColorHint="#348781"
+        app:layout_constraintBottom_toTopOf="@+id/userPass"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/userPass"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginBottom="17dp"
         android:hint="Parola"
         android:inputType="textPassword"
         android:textColor="#348781"
         android:textColorHint="#348781"
+        app:layout_constraintBottom_toTopOf="@+id/rememberMe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userEmail" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
         android:background="#ECD672"
         android:text="Giriş"
         android:textColor="#348781"
-        app:layout_constraintBottom_toTopOf="@+id/forgetPassword"
-        app:layout_constraintStart_toStartOf="@+id/forgetPassword" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/rememberMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_marginBottom="16dp"
         android:background="#ECD672"
         android:shadowColor="#348781"
         android:text="Beni Hatırla"
         android:textColor="#348781"
+        app:layout_constraintBottom_toTopOf="@+id/signin"
+        app:layout_constraintEnd_toEndOf="@+id/signin" />
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Kayıt Ol"
+        android:textColor="#348781"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userPass" />
+        app:layout_constraintTop_toBottomOf="@+id/signin" />
 
 </android.support.constraint.ConstraintLayout>
