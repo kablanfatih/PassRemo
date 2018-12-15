@@ -23,6 +23,7 @@ public class SignIn extends AppCompatActivity {
     FirebaseAuth mAuth;
     EditText gmail, password;
     Button signIn;
+    TextView register;
     Button back;
     TextView forgetPassword;
 
@@ -50,6 +51,16 @@ public class SignIn extends AppCompatActivity {
                 if (!gmailText.equals("") && !passwordText.equals("")) {
                     signIn(gmailText, passwordText);
                 }
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignIn.this,SignUp.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -107,6 +118,7 @@ public class SignIn extends AppCompatActivity {
         gmail = (EditText) findViewById(R.id.userEmail);
         password = (EditText) findViewById(R.id.userPass);
         signIn = (Button) findViewById(R.id.signin);
+        register = (TextView) findViewById(R.id.register);
         back = (Button) findViewById(R.id.back);
         mAuth = FirebaseAuth.getInstance();
         forgetPassword = (TextView) findViewById(R.id.forgetPassword);
