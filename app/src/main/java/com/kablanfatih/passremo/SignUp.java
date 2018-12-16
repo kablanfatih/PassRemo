@@ -49,7 +49,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(SignUp.this, MainActivity.class);
+                Intent intent = new Intent(SignUp.this, SignIn.class);
                 startActivity(intent);
                 finish();
 
@@ -67,7 +67,7 @@ public class SignUp extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Toast.makeText(SignUp.this, "Kayıt Başarılı", Toast.LENGTH_LONG).show();
                     emailVerify();
-                    Intent intent = new Intent(SignUp.this, MainActivity.class);
+                    Intent intent = new Intent(SignUp.this, SignIn.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(intent);
 

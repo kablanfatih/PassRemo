@@ -72,16 +72,6 @@ public class SignIn extends AppCompatActivity {
                 finish();
             }
         });
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(SignIn.this,MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 
     private void signIn(final String gmail, final String password) {
