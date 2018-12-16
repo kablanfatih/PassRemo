@@ -66,7 +66,7 @@ public class PassChange extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
 
-                    Intent intent = new Intent(PassChange.this, MainActivity.class);
+                    Intent intent = new Intent(PassChange.this, SignIn.class);
                     startActivity(intent);
                     finish();
                     Toast.makeText(getApplicationContext(), "Şifreniz Değiştirilmiştir", Toast.LENGTH_SHORT).show();

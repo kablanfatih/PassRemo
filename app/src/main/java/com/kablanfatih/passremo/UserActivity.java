@@ -88,7 +88,7 @@ public class UserActivity extends AppCompatActivity {
                         .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 mAuth.signOut();
-                                Intent signOut = new Intent(UserActivity.this, MainActivity.class);
+                                Intent signOut = new Intent(UserActivity.this, SignIn.class);
                                 startActivity(signOut);
                                 finish();
                             }
