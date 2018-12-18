@@ -43,7 +43,7 @@ public class ListPassword {
 
             ListPassword gecici = new ListPassword();
             gecici.setTitle("Parola "+i);
-            gecici.setPassword("Tanım Bilgisi "+i);
+            gecici.setName("Açıklama "+i);
             dataList.add(gecici);
         }
         return dataList;
