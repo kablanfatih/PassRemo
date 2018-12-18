@@ -2,14 +2,12 @@ package com.kablanfatih.passremo;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,11 +19,6 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.security.Timestamp;
-import java.util.TimerTask;
-
-import static java.lang.Thread.sleep;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -145,9 +138,6 @@ public class UserActivity extends AppCompatActivity {
 
                 recyclerView.setVisibility(View.INVISIBLE);
                 passwordInfo.setVisibility(View.VISIBLE);
-
-                Toast.makeText(getApplicationContext(), "deneme", Toast.LENGTH_LONG).show();
-
             }
         });
 
@@ -171,31 +161,5 @@ public class UserActivity extends AppCompatActivity {
             }
         });
     }
-/*
-    @Override
-    protected void onStop() {
-
-        new CountDownTimer(5000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-            }
-
-            @Override
-            public void onFinish() {
-
-                finish();
-            }
-        }.start();
-
-        super.onStop();
-    }
-
-   /* @Override
-    protected void onUserLeaveHint() {
-
-        finish();
-    }*/
-
 }
 

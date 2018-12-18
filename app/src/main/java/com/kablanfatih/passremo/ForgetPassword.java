@@ -1,7 +1,6 @@
 package com.kablanfatih.passremo;
 
 import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

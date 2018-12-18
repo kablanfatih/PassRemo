@@ -39,11 +39,11 @@ public class ListPassword {
                 R.color.colorPrimary,R.color.colorPrimaryDark,R.color.colorPrimary
         };
 
-        for (int i =0;i<resimler.length;i++){
+        for (int i =1;i<resimler.length;i++){
 
             ListPassword gecici = new ListPassword();
-            gecici.setTitle("Manzara "+i);
-            gecici.setName("Tanım Bilgisi "+i);
+            gecici.setTitle("Parola "+i);
+            gecici.setPassword("Tanım Bilgisi "+i);
             dataList.add(gecici);
         }
         return dataList;
