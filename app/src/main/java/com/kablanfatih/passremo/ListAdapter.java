@@ -6,17 +6,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
 
-    ArrayList<ListPassword> mDataList;
-    LayoutInflater inflater;
+    private ArrayList<ListPassword> mDataList;
+    private LayoutInflater inflater;
 
-    public ListAdapter(Context context,ArrayList<ListPassword> data){
+    ListAdapter(Context context, ArrayList<ListPassword> data){
 
         inflater = LayoutInflater.from(context);
         this.mDataList = data;
@@ -27,8 +26,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         View view = inflater.inflate(R.layout.list_password,viewGroup,false);
-        MyViewHolder holder = new MyViewHolder(view);
-        return holder;
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -48,14 +46,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         TextView title,name;
         int tiklanilanOgeninPozisyonu;
 
-        public MyViewHolder(@NonNull View itemView) {
+        MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             title = (TextView) itemView.findViewById(R.id.title);
             name = (TextView) itemView.findViewById(R.id.name);
         }
 
-        public void setData(ListPassword tiklanilanManzara, int position) {
+        void setData(ListPassword tiklanilanManzara, int position) {
 
             this.title.setText(tiklanilanManzara.getTitle());
             this.name.setText(tiklanilanManzara.getTitle());

@@ -36,12 +36,10 @@ public class SignUp extends AppCompatActivity {
                 String userName = gmail.getText().toString();
                 String pass = password.getText().toString();
 
-                if (!userName.equals("") && !pass.equals("")) {
+                if (!userName.isEmpty() && !pass.isEmpty()) {
                     signUp(userName, pass);
-                    // gmail.setText("");
-                    //password.setText("");
-
                 }
+                Toast.makeText(SignUp.this, "Lütfen Boşlukları Doldurunuz", Toast.LENGTH_SHORT).show();
             }
         });
 
