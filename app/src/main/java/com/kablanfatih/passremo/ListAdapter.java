@@ -56,7 +56,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         void setData(ListPassword tiklanilanManzara, int position) {
 
             this.title.setText(tiklanilanManzara.getTitle());
-            this.name.setText(tiklanilanManzara.getTitle());
+            this.name.setText(tiklanilanManzara.getName());
             this.tiklanilanOgeninPozisyonu = position;
         }
     }
