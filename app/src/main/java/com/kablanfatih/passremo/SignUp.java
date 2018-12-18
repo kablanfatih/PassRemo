@@ -66,7 +66,6 @@ public class SignUp extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     Toast.makeText(SignUp.this, "Kayıt Başarılı", Toast.LENGTH_LONG).show();
-                    emailVerify();
                     Intent intent = new Intent(SignUp.this, SignIn.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(intent);
@@ -89,22 +88,7 @@ public class SignUp extends AppCompatActivity {
         user = mAuth.getCurrentUser();
     }
 
-    void emailVerify() {
 
-        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if (task.isSuccessful()) {
-
-                    Toast.makeText(SignUp.this, "Aktivasyon İçin E-posta Gönderildi", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(SignUp.this, "E-posta Hatası: Aktivasyon Kodu Gönderilemedi", Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

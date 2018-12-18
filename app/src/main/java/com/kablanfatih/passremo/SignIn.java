@@ -86,10 +86,10 @@ public class SignIn extends AppCompatActivity {
                         loginPrefsEditor.putString("username", String.valueOf(gmail));
                         loginPrefsEditor.putString("password", String.valueOf(password));
                         loginPrefsEditor.commit();
-                    } else {
+                    }
                         loginPrefsEditor.clear();
                         loginPrefsEditor.commit();
-                    }
+
                     Intent intent = new Intent(SignIn.this, UserActivity.class);
                     startActivity(intent);
                     finish();
@@ -117,7 +117,7 @@ public class SignIn extends AppCompatActivity {
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
         remember = loginPreferences.getBoolean("remember", false);
-        if (remember == true) {
+        if (remember) {
             gmail.setText(loginPreferences.getString("username", ""));
             password.setText(loginPreferences.getString("password", ""));
             rememberMe.setChecked(true);
