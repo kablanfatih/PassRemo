@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignIn extends AppCompatActivity {
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     EditText gmail, password;
     Button signIn;
     TextView register;
@@ -56,7 +56,7 @@ public class SignIn extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignIn.this,SignUp.class);
+                Intent intent = new Intent(SignIn.this, SignUp.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
                 finish();
@@ -86,8 +86,8 @@ public class SignIn extends AppCompatActivity {
                         loginPrefsEditor.putString("password", String.valueOf(password));
                         loginPrefsEditor.commit();
                     }
-                        loginPrefsEditor.clear();
-                        loginPrefsEditor.commit();
+                    loginPrefsEditor.clear();
+                    loginPrefsEditor.commit();
 
                     Intent intent = new Intent(SignIn.this, UserActivity.class);
                     startActivity(intent);

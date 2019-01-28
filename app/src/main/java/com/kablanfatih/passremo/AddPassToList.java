@@ -20,7 +20,6 @@ public class AddPassToList extends AppCompatActivity {
 
     Button savePassword, backList;
     EditText adress, username, password;
-    //TODO mAuth private yapılacak
     private FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference myRef;

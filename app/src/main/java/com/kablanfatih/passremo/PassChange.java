@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class PassChange extends AppCompatActivity {
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     FirebaseUser user;
     Button confirmPass;
     Button back;
@@ -33,7 +33,7 @@ public class PassChange extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PassChange.this,UserActivity.class);
+                Intent intent = new Intent(PassChange.this, UserActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -75,6 +75,7 @@ public class PassChange extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 

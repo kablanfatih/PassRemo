@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class UserActivity extends AppCompatActivity {
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     FirebaseUser user;
     RecyclerView recyclerView;
     FloatingActionButton addButton;
@@ -131,7 +131,7 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(UserActivity.this,AddPassToList.class);
+                Intent intent = new Intent(UserActivity.this, AddPassToList.class);
                 startActivity(intent);
             }
         });
