@@ -17,48 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/password_info"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="invisible"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="70dp">
 
-        <EditText
-            android:id="@+id/adress"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="Adres"/>
-
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="Kullanıcı Adı" />
-
-        <EditText
-            android:id="@id/password"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="Parola" />
-
-        <Button
-            android:id="@+id/savepassword"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Kaydet"
-            android:layout_marginLeft="50dp"/>
-        <Button
-            android:id="@+id/backlist"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Vazgeç"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"/>
-    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addButton"

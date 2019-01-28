@@ -13,9 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,7 +25,6 @@ public class UserActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton addButton;
     LinearLayout passwordInfo;
-    Button savePassword, backList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +50,6 @@ public class UserActivity extends AppCompatActivity {
         addButton = (FloatingActionButton) findViewById(R.id.addButton);
         passwordInfo = (LinearLayout) findViewById(R.id.password_info);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        savePassword = (Button) findViewById(R.id.savepassword);
-        backList = (Button) findViewById(R.id.backlist);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -136,28 +131,8 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                recyclerView.setVisibility(View.INVISIBLE);
-                passwordInfo.setVisibility(View.VISIBLE);
-            }
-        });
-
-        savePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                passwordInfo.setVisibility(View.INVISIBLE);
-                recyclerView.setVisibility(View.VISIBLE);
-                Toast.makeText(getApplicationContext(), "Kaydedildi", Toast.LENGTH_LONG).show();
-
-            }
-        });
-
-        backList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                passwordInfo.setVisibility(View.INVISIBLE);
-                recyclerView.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(UserActivity.this,AddPassToList.class);
+                startActivity(intent);
             }
         });
     }
