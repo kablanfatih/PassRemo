@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "279473226272",
-    "firebase_url": "https://passremo-090918.firebaseio.com",
-    "project_id": "passremo-090918",
-    "storage_bucket": "passremo-090918.appspot.com"
+    "project_number": "608888812672",
+    "firebase_url": "https://passremo-0101.firebaseio.com",
+    "project_id": "passremo-0101",
+    "storage_bucket": "passremo-0101.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:279473226272:android:20fcc716f889819b",
+        "mobilesdk_app_id": "1:608888812672:android:20fcc716f889819b",
         "android_client_info": {
           "package_name": "com.kablanfatih.passremo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "279473226272-8ejk7qf47c9nobj8kgpa92g74c2oq2rs.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.kablanfatih.passremo",
-            "certificate_hash": "5470023e5dda69779dec46644f11296c71a9d12b"
-          }
-        },
-        {
-          "client_id": "279473226272-d995i78pvgbst26sq2imld62nmskam2e.apps.googleusercontent.com",
+          "client_id": "608888812672-bki5jjn07ctarr1voc1217b1plu9q9rf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDGdVzVp0tgjbck5ZiQg3qKCm7GbHgJkfc"
+          "current_key": "AIzaSyA59Etf1Ic1F9RD7xY8aurPIEi6vDcOf5M"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "279473226272-d995i78pvgbst26sq2imld62nmskam2e.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

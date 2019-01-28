@@ -38,8 +38,8 @@ public class SignUp extends AppCompatActivity {
 
                 if (!userName.isEmpty() && !pass.isEmpty()) {
                     signUp(userName, pass);
-                }
-                Toast.makeText(SignUp.this, "Lütfen Boşlukları Doldurunuz", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(SignUp.this, "Lütfen Boşlukları Doldurunuz", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -85,7 +85,6 @@ public class SignUp extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
     }
-
 
 
     @Override
