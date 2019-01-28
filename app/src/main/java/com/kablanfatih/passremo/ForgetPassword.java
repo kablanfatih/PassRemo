@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgetPassword extends AppCompatActivity {
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     Button sendMail;
     Button back;
     EditText email;
@@ -64,7 +64,7 @@ public class ForgetPassword extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ForgetPassword.this,SignIn.class);
+                Intent intent = new Intent(ForgetPassword.this, SignIn.class);
                 startActivity(intent);
                 finish();
             }
