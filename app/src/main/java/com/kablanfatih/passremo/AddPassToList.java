@@ -63,7 +63,8 @@ public class AddPassToList extends AppCompatActivity {
     public void writeInfoToDatabase() {
         FirebaseUser user = mAuth.getCurrentUser();
         String userEmail = user.getEmail();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Records");
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference().child("Records").child(mAuth.getUid());
         ListPassword listPassword = new ListPassword();
         listPassword.setEmail(userEmail);
         listPassword.setTitle(adress.getText().toString());
@@ -72,7 +73,7 @@ public class AddPassToList extends AppCompatActivity {
 
         if (!listPassword.getTitle().isEmpty() && !listPassword.getName().isEmpty() && !listPassword.getPassword().isEmpty()) {
 
-            databaseReference.push().setValue(listPassword);
+            myRef.push().setValue(listPassword);
 
             Toast.makeText(getApplicationContext(), "Parolanız Listenize Eklenmiştir", Toast.LENGTH_LONG).show();
             adress.setText("");
