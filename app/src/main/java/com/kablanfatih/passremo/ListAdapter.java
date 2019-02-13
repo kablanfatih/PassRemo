@@ -15,17 +15,18 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
     private ArrayList<ListPassword> mDataList;
     private LayoutInflater inflater;
 
-    ListAdapter(Context context, ArrayList<ListPassword> data){
+    ListAdapter(Context context, ArrayList<ListPassword> data) {
 
         inflater = LayoutInflater.from(context);
         this.mDataList = data;
     }
 
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View view = inflater.inflate(R.layout.list_password,viewGroup,false);
+        View view = inflater.inflate(R.layout.list_password, viewGroup, false);
         return new MyViewHolder(view);
     }
 
@@ -33,7 +34,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
 
         ListPassword tiklanilanManzara = mDataList.get(position);
-        myViewHolder.setData(tiklanilanManzara,position);
+        myViewHolder.setData(tiklanilanManzara, position);
     }
 
     @Override
@@ -41,9 +42,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         return mDataList.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title,name;
+        TextView title, name;
         int tiklanilanOgeninPozisyonu;
 
         MyViewHolder(@NonNull View itemView) {

@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UserActivity extends AppCompatActivity {
@@ -37,6 +38,8 @@ public class UserActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton addButton;
     LinearLayout passwordInfo;
+    ArrayList<ListPassword> listPassword;
+    ListAdapter listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,20 +127,14 @@ public class UserActivity extends AppCompatActivity {
                     .show();
         }
         return super.onKeyDown(keyCode, event);
-
     }
 
     private void createRecyclerView() {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-
-        ListAdapter listAdapter = new ListAdapter(this, ListPassword.getData());
-        recyclerView.setAdapter(listAdapter);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-
     }
 
     private void createPassword() {
@@ -160,14 +157,20 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                listPassword = new ArrayList<ListPassword>();
+
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
+
+                    ListPassword record = ds.getValue(ListPassword.class);
+                    listPassword.add(record);
 
                     HashMap<String, String> hashMap = (HashMap<String, String>) ds.getValue();
 
                     Log.i("title", hashMap.get("password"));
                     Log.i("allRecord", ds.getValue().toString());
-
                 }
+                listAdapter = new ListAdapter(UserActivity.this, listPassword);
+                recyclerView.setAdapter(listAdapter);
             }
 
             @Override
@@ -176,8 +179,5 @@ public class UserActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Hata Oluştu Lütfen Tekrar Deneyiniz", Toast.LENGTH_LONG).show();
             }
         });
-
     }
-
 }
-
