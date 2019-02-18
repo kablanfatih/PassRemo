@@ -36,7 +36,6 @@ public class UserActivity extends AppCompatActivity {
     DatabaseReference myRef;
     RecyclerView recyclerView;
     FloatingActionButton addButton;
-    LinearLayout passwordInfo;
     ArrayList<ListPassword> listPassword;
     ListAdapter listAdapter;
 
@@ -64,7 +63,6 @@ public class UserActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         myRef = firebaseDatabase.getReference();
         addButton = (FloatingActionButton) findViewById(R.id.addButton);
-        passwordInfo = (LinearLayout) findViewById(R.id.password_info);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
     }
 
