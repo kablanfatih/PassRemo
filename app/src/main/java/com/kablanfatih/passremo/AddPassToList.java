@@ -3,7 +3,6 @@ package com.kablanfatih.passremo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,8 +12,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.UUID;
 
 public class AddPassToList extends AppCompatActivity {
 
@@ -30,7 +27,6 @@ public class AddPassToList extends AppCompatActivity {
         setContentView(R.layout.activity_add_pass_to_list);
 
         init();
-
     }
 
     public void init() {
@@ -61,11 +57,14 @@ public class AddPassToList extends AppCompatActivity {
     }
 
     public void writeInfoToDatabase() {
+        String recordId = myRef.push().getKey();
         FirebaseUser user = mAuth.getCurrentUser();
+        assert user != null;
         String userEmail = user.getEmail();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference().child("Records").child(mAuth.getUid());
+        myRef = database.getReference("Records").child(user.getUid());
         ListPassword listPassword = new ListPassword();
+        listPassword.setRecordId(recordId);
         listPassword.setEmail(userEmail);
         listPassword.setTitle(adress.getText().toString());
         listPassword.setName(username.getText().toString());
@@ -73,7 +72,7 @@ public class AddPassToList extends AppCompatActivity {
 
         if (!listPassword.getTitle().isEmpty() && !listPassword.getName().isEmpty() && !listPassword.getPassword().isEmpty()) {
 
-            myRef.push().setValue(listPassword);
+            myRef.child(recordId).setValue(listPassword);
 
             Toast.makeText(getApplicationContext(), "Parolanız Listenize Eklenmiştir", Toast.LENGTH_LONG).show();
             adress.setText("");

@@ -38,6 +38,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         myViewHolder.setData(tiklanilanManzara, position);
     }
 
+    public String getRecordId(int position){
+
+        return mDataList.get(position).getRecordId();
+    }
+
     @Override
     public int getItemCount() {
         return mDataList.size();
@@ -59,6 +64,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
             deleteRecord = (ImageView) itemView.findViewById(R.id.delete_button);
             updateRecord = (ImageView) itemView.findViewById(R.id.update_button);
             copyPassword = (ImageView) itemView.findViewById(R.id.copy_password);
+
+            deleteRecord.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    String uuid = getRecordId(tiklanilanOgeninPozisyonu);
+
+                    UserActivity record = new UserActivity();
+                    record.deleteRecord(uuid);
+                }
+            });
         }
 
         void setData(ListPassword tiklanilanManzara, int position) {
