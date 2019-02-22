@@ -11,6 +11,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.tinmegali.security.mcipher.MEncryptor;
+import com.tinmegali.security.mcipher.MEncryptorBuilder;
+import com.tinmegali.security.mcipher.exceptions.MEncryptorException;
+
+import java.util.Objects;
 
 public class AddPassToList extends AppCompatActivity {
 
@@ -19,6 +24,7 @@ public class AddPassToList extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference myRef;
+    MEncryptor encryptor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +48,11 @@ public class AddPassToList extends AppCompatActivity {
         savePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                writeInfoToDatabase();
+                try {
+                    writeInfoToDatabase();
+                } catch (MEncryptorException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -54,7 +64,13 @@ public class AddPassToList extends AppCompatActivity {
         });
     }
 
-    public void writeInfoToDatabase() {
+    public void writeInfoToDatabase() throws MEncryptorException {
+
+        String ALIAS = "0https4://08digital-9transltr82firebaseio.0com/";
+        encryptor = new MEncryptorBuilder(ALIAS).build();
+        String getPassword = password.getText().toString();
+        String encryptedPassword = encryptor.encryptString(getPassword, this);
+
         String recordId = myRef.push().getKey();
         FirebaseUser user = mAuth.getCurrentUser();
         assert user != null;
@@ -66,11 +82,11 @@ public class AddPassToList extends AppCompatActivity {
         listPassword.setEmail(userEmail);
         listPassword.setTitle(adress.getText().toString());
         listPassword.setName(username.getText().toString());
-        listPassword.setPassword(password.getText().toString());
+        listPassword.setPassword(encryptedPassword);
 
-        if (!listPassword.getTitle().isEmpty() && !listPassword.getName().isEmpty() && !listPassword.getPassword().isEmpty()) {
+        if (!listPassword.getTitle().isEmpty() && !listPassword.getName().isEmpty() && !encryptedPassword.isEmpty()) {
 
-            myRef.child(recordId).setValue(listPassword);
+            myRef.child(Objects.requireNonNull(recordId)).setValue(listPassword);
 
             Toast.makeText(getApplicationContext(), "Parolanız Listenize Eklenmiştir", Toast.LENGTH_LONG).show();
             adress.setText("");

@@ -34,11 +34,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
 
-        ListPassword tiklanilanManzara = mDataList.get(position);
-        myViewHolder.setData(tiklanilanManzara, position);
+        ListPassword listPassword = mDataList.get(position);
+        myViewHolder.setData(listPassword, position);
     }
 
-    public String getRecordId(int position){
+    private String getRecordId(int position){
 
         return mDataList.get(position).getRecordId();
     }
@@ -53,7 +53,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         TextView title, name;
         ImageView deleteRecord, updateRecord, copyPassword;
         EditText password;
-        int tiklanilanOgeninPozisyonu;
+        int clickedCardPosition;
 
         MyViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -69,7 +69,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
                 @Override
                 public void onClick(View v) {
 
-                    String uuid = getRecordId(tiklanilanOgeninPozisyonu);
+                    String uuid = getRecordId(clickedCardPosition);
 
                     UserActivity record = new UserActivity();
                     record.deleteRecord(uuid);
@@ -77,12 +77,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
             });
         }
 
-        void setData(ListPassword tiklanilanManzara, int position) {
+        void setData(ListPassword listPassword, int position) {
 
-            this.title.setText(tiklanilanManzara.getTitle());
-            this.name.setText(tiklanilanManzara.getName());
-            this.password.setText(tiklanilanManzara.getPassword());
-            this.tiklanilanOgeninPozisyonu = position;
+            this.title.setText(listPassword.getTitle());
+            this.name.setText(listPassword.getName());
+            this.password.setText(listPassword.getPassword());
+            this.clickedCardPosition = position;
         }
     }
 }

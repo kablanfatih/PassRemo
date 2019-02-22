@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
@@ -25,8 +24,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tinmegali.security.mcipher.MDecryptor;
+import com.tinmegali.security.mcipher.MDecryptorBuilder;
+import com.tinmegali.security.mcipher.exceptions.MDecryptorException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -38,6 +42,7 @@ public class UserActivity extends AppCompatActivity {
     FloatingActionButton addButton;
     ArrayList<ListPassword> listPassword;
     ListAdapter listAdapter;
+    MDecryptor decryptor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,7 @@ public class UserActivity extends AppCompatActivity {
             finish();
         }
     }
+
     void define() {
 
         mAuth = FirebaseAuth.getInstance();
@@ -153,16 +159,27 @@ public class UserActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 listPassword = new ArrayList<ListPassword>();
+                String ALIAS = "0https4://08digital-9transltr82firebaseio.0com/";
+
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                    ListPassword record = ds.getValue(ListPassword.class);
-                    listPassword.add(record);
+                    HashMap<String, String> hashMap = (HashMap<String, String>) ds.getValue();
+
+                    String password = Objects.requireNonNull(hashMap).get("password");
+                    try {
+                        decryptor = new MDecryptorBuilder(ALIAS).build();
+                        String decrypted = decryptor.decryptString(Objects.requireNonNull(password), getApplicationContext());
+                        ListPassword record = ds.getValue(ListPassword.class);
+                        Objects.requireNonNull(record).setPassword(decrypted);
+                        listPassword.add(record);
+                    } catch (MDecryptorException e) {
+                        e.printStackTrace();
+                    }
                 }
                 listAdapter = new ListAdapter(UserActivity.this, listPassword);
                 recyclerView.setAdapter(listAdapter);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -170,7 +187,6 @@ public class UserActivity extends AppCompatActivity {
             }
         });
     }
-
     public void deleteRecord(String recordId) {
 
         mAuth = FirebaseAuth.getInstance();
