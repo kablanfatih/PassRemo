@@ -160,18 +160,22 @@ public class UserActivity extends AppCompatActivity {
 
                 listPassword = new ArrayList<ListPassword>();
                 String ALIAS = "0https4://08digital-9transltr82firebaseio.0com/";
-
+                ListPassword record = new ListPassword();
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                    HashMap<String, String> hashMap = (HashMap<String, String>) ds.getValue();
+                    String name = ds.child("name").getValue(String.class);
+                    String title = ds.child("title").getValue(String.class);
+                    String password = ds.child("password").getValue(String.class);
+                    String recordId = ds.child("recordId").getValue(String.class);
 
-                    String password = Objects.requireNonNull(hashMap).get("password");
                     try {
                         decryptor = new MDecryptorBuilder(ALIAS).build();
                         String decrypted = decryptor.decryptString(Objects.requireNonNull(password), getApplicationContext());
-                        ListPassword record = ds.getValue(ListPassword.class);
-                        Objects.requireNonNull(record).setPassword(decrypted);
+                        record.setName(name);
+                        record.setTitle(title);
+                        record.setPassword(decrypted);
+                        record.setRecordId(recordId);
                         listPassword.add(record);
                     } catch (MDecryptorException e) {
                         e.printStackTrace();
@@ -180,6 +184,7 @@ public class UserActivity extends AppCompatActivity {
                 listAdapter = new ListAdapter(UserActivity.this, listPassword);
                 recyclerView.setAdapter(listAdapter);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -187,6 +192,7 @@ public class UserActivity extends AppCompatActivity {
             }
         });
     }
+
     public void deleteRecord(String recordId) {
 
         mAuth = FirebaseAuth.getInstance();
