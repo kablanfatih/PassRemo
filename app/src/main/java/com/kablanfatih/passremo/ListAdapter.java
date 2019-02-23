@@ -3,6 +3,7 @@ package com.kablanfatih.passremo;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -45,7 +46,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         myViewHolder.setData(listPassword, position);
     }
 
-    private String getRecordId(int position){
+    private String getRecordId(int position) {
 
         return mDataList.get(position).getRecordId();
     }
@@ -89,6 +90,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
                     myClip = ClipData.newPlainText("parola", password.getText());
                     myClipBoard.setPrimaryClip(myClip);
                     Toast.makeText(itemView.getContext(), "Parola Kopyalandı", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            updateRecord.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(itemView.getContext(), UpdateRecord.class);
+                    itemView.getContext().startActivity(intent);
                 }
             });
         }
