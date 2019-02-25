@@ -96,7 +96,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
             updateRecord.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    String uuid = getRecordId(clickedCardPosition);
                     Intent intent = new Intent(itemView.getContext(), UpdateRecord.class);
+                    intent.putExtra("recordId",uuid);
                     itemView.getContext().startActivity(intent);
                 }
             });
