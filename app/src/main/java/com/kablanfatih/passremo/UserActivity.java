@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,12 +23,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tinmegali.security.mcipher.MDecryptor;
-import com.tinmegali.security.mcipher.MDecryptorBuilder;
-import com.tinmegali.security.mcipher.exceptions.MDecryptorException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Objects;
 
 public class UserActivity extends AppCompatActivity {
@@ -42,7 +37,7 @@ public class UserActivity extends AppCompatActivity {
     FloatingActionButton addButton;
     ArrayList<ListPassword> listPassword;
     ListAdapter listAdapter;
-    MDecryptor decryptor;
+    EncryptionService encryptionService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +65,7 @@ public class UserActivity extends AppCompatActivity {
         myRef = firebaseDatabase.getReference();
         addButton = (FloatingActionButton) findViewById(R.id.addButton);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        encryptionService = new EncryptionService();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -159,21 +155,22 @@ public class UserActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 listPassword = new ArrayList<ListPassword>();
-                String ALIAS = "0https4://08digital-9transltr82firebaseio.0com/";
+                String email = user.getEmail();
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ListPassword getRecord = ds.getValue(ListPassword.class);
 
-                    try {
-                        decryptor = new MDecryptorBuilder(ALIAS).build();
-                        String password = Objects.requireNonNull(getRecord).getPassword();
-                        String decrypted = decryptor.decryptString(password, getApplicationContext());
-                        getRecord.setPassword(decrypted);
-                        listPassword.add(getRecord);
+                    String password = Objects.requireNonNull(getRecord).getPassword();
 
-                    } catch (MDecryptorException e) {
+                    String decrypted = null;
+                    try {
+                        decrypted = encryptionService.decrypt(password, email);
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
+
+                    getRecord.setPassword(decrypted);
+                    listPassword.add(getRecord);
                 }
                 listAdapter = new ListAdapter(UserActivity.this, listPassword);
                 recyclerView.setAdapter(listAdapter);
