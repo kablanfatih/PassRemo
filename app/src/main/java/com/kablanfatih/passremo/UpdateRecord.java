@@ -71,10 +71,12 @@ public class UpdateRecord extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        myRef.setValue(encryptedPassword);
-
-        Toast.makeText(getApplicationContext(), "Parolanız Değiştirilmiştir", Toast.LENGTH_SHORT).show();
-        editTextNewPassword.setText("");
-
+        if (!newPassword.isEmpty()) {
+            myRef.setValue(encryptedPassword);
+            Toast.makeText(getApplicationContext(), "Parolanız Değiştirilmiştir", Toast.LENGTH_SHORT).show();
+            editTextNewPassword.setText("");
+        } else {
+            Toast.makeText(getApplicationContext(), "Lütfen Parola Alanını Doldurunuz", Toast.LENGTH_SHORT).show();
+        }
     }
 }
