@@ -1,5 +1,6 @@
 package com.kablanfatih.passremo;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -20,12 +21,11 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignIn extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    EditText gmail, password;
+    EditText email, password;
     Button signIn;
     TextView register;
     Button back;
     TextView forgetPassword;
-
 
     SharedPreferences loginPreferences;
     SharedPreferences.Editor loginPrefsEditor;
@@ -42,13 +42,13 @@ public class SignIn extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String gmailText = gmail.getText().toString();
-                gmail.setText("");
+                String emailText = email.getText().toString();
+                email.setText("");
                 String passwordText = password.getText().toString();
                 password.setText("");
 
-                if (!gmailText.equals("") && !passwordText.equals("")) {
-                    signIn(gmailText, passwordText);
+                if (!emailText.equals("") && !passwordText.equals("")) {
+                    signIn(emailText, passwordText);
                 }
             }
         });
@@ -73,8 +73,8 @@ public class SignIn extends AppCompatActivity {
         });
     }
 
-    private void signIn(final String gmail, final String password) {
-        mAuth.signInWithEmailAndPassword(gmail, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    private void signIn(final String email, final String password) {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -82,9 +82,8 @@ public class SignIn extends AppCompatActivity {
 
                     if (rememberMe.isChecked()) {
                         loginPrefsEditor.putBoolean("remember", true);
-                        loginPrefsEditor.putString("username", String.valueOf(gmail));
+                        loginPrefsEditor.putString("username", String.valueOf(email));
                         loginPrefsEditor.putString("password", String.valueOf(password));
-                        loginPrefsEditor.commit();
                     }
                     loginPrefsEditor.clear();
                     loginPrefsEditor.commit();
@@ -95,16 +94,14 @@ public class SignIn extends AppCompatActivity {
 
                 } else {
                     Toast.makeText(getApplicationContext(), "Kullanıcı E-posta veya Parola Hatalı", Toast.LENGTH_LONG).show();
-
                 }
-
             }
         });
-
     }
 
-    void define() {
-        gmail = (EditText) findViewById(R.id.userEmail);
+   @SuppressLint("CommitPrefEdits")
+   private void define() {
+        email = (EditText) findViewById(R.id.userEmail);
         password = (EditText) findViewById(R.id.userPass);
         signIn = (Button) findViewById(R.id.signin);
         register = (TextView) findViewById(R.id.register);
@@ -117,7 +114,7 @@ public class SignIn extends AppCompatActivity {
         loginPrefsEditor = loginPreferences.edit();
         remember = loginPreferences.getBoolean("remember", false);
         if (remember) {
-            gmail.setText(loginPreferences.getString("username", ""));
+            email.setText(loginPreferences.getString("username", ""));
             password.setText(loginPreferences.getString("password", ""));
             rememberMe.setChecked(true);
         }
