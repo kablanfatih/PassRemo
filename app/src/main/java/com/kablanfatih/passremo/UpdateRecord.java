@@ -1,5 +1,6 @@
 package com.kablanfatih.passremo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -71,10 +72,14 @@ public class UpdateRecord extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        Intent intent = new Intent(getApplicationContext(), UserActivity.class);
         if (!newPassword.isEmpty()) {
             myRef.setValue(encryptedPassword);
             Toast.makeText(getApplicationContext(), "Parolanız Değiştirilmiştir", Toast.LENGTH_SHORT).show();
-            editTextNewPassword.setText("");
+            startActivity(intent);
+            finish();
+
         } else {
             Toast.makeText(getApplicationContext(), "Lütfen Parola Alanını Doldurunuz", Toast.LENGTH_SHORT).show();
         }
