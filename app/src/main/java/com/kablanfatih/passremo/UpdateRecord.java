@@ -11,21 +11,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.tinmegali.security.mcipher.MEncryptor;
-import com.tinmegali.security.mcipher.MEncryptorBuilder;
-import com.tinmegali.security.mcipher.exceptions.MEncryptorException;
 
 import java.util.Objects;
 
 public class UpdateRecord extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
     FirebaseUser user;
     FirebaseDatabase database;
     DatabaseReference myRef;
     Button buttonChangePassword;
+    Button buttonBack;
     EditText editTextNewPassword;
-    MEncryptor mEncryptor;
+    EncryptionService encryptionService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +32,14 @@ public class UpdateRecord extends AppCompatActivity {
     }
 
     private void init() {
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
         buttonChangePassword = (Button) findViewById(R.id.password_confirm);
+        buttonBack = (Button) findViewById(R.id.back);
         editTextNewPassword = (EditText) findViewById(R.id.new_password);
+        encryptionService = new EncryptionService();
 
         buttonChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,25 +49,31 @@ public class UpdateRecord extends AppCompatActivity {
                 changePasswordToDatabase(recordId);
             }
         });
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
-    public void changePasswordToDatabase(String recordId){
+    public void changePasswordToDatabase(String recordId) {
 
-        mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
-        database = FirebaseDatabase.getInstance();
         myRef = database.getReference().child("Records").child(user.getUid()).child(recordId).child("password");
 
-        String ALIAS = "0https4://08digital-9transltr82firebaseio.0com/";
+        String email = user.getEmail();
         String newPassword = editTextNewPassword.getText().toString();
+
+        String encryptedPassword = null;
         try {
-        mEncryptor = new MEncryptorBuilder(ALIAS).build();
-        String encryptedPassword = mEncryptor.encryptString(newPassword,this);
-            myRef.setValue(encryptedPassword);
-        } catch (MEncryptorException e) {
+            encryptedPassword = encryptionService.encrypt(newPassword, email);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        Toast.makeText(getApplicationContext(),"Parolanız Değiştirilmiştir",Toast.LENGTH_SHORT).show();
+        myRef.setValue(encryptedPassword);
+
+        Toast.makeText(getApplicationContext(), "Parolanız Değiştirilmiştir", Toast.LENGTH_SHORT).show();
         editTextNewPassword.setText("");
 
     }
