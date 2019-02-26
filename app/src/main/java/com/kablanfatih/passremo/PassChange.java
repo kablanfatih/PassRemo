@@ -44,7 +44,7 @@ public class PassChange extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-        confirmPass = (Button) findViewById(R.id.pass_confirm);
+        confirmPass = (Button) findViewById(R.id.password_confirm);
         back = (Button) findViewById(R.id.back);
         newPass = (EditText) findViewById(R.id.pass_new);
         confirmPass.setOnClickListener(new View.OnClickListener() {

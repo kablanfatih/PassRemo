@@ -160,23 +160,17 @@ public class UserActivity extends AppCompatActivity {
 
                 listPassword = new ArrayList<ListPassword>();
                 String ALIAS = "0https4://08digital-9transltr82firebaseio.0com/";
-                ListPassword record = new ListPassword();
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-
-                    String name = ds.child("name").getValue(String.class);
-                    String title = ds.child("title").getValue(String.class);
-                    String password = ds.child("password").getValue(String.class);
-                    String recordId = ds.child("recordId").getValue(String.class);
+                    ListPassword getRecord = ds.getValue(ListPassword.class);
 
                     try {
                         decryptor = new MDecryptorBuilder(ALIAS).build();
-                        String decrypted = decryptor.decryptString(Objects.requireNonNull(password), getApplicationContext());
-                        record.setName(name);
-                        record.setTitle(title);
-                        record.setPassword(decrypted);
-                        record.setRecordId(recordId);
-                        listPassword.add(record);
+                        String password = Objects.requireNonNull(getRecord).getPassword();
+                        String decrypted = decryptor.decryptString(password, getApplicationContext());
+                        getRecord.setPassword(decrypted);
+                        listPassword.add(getRecord);
+
                     } catch (MDecryptorException e) {
                         e.printStackTrace();
                     }
