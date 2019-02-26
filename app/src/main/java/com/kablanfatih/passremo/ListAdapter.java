@@ -3,8 +3,10 @@ package com.kablanfatih.passremo;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,11 +78,18 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
             deleteRecord.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    String uuid = getRecordId(clickedCardPosition);
-
-                    UserActivity record = new UserActivity();
-                    record.deleteRecord(uuid);
+                    new AlertDialog.Builder(itemView.getContext())
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setMessage("Parolanızı Siliyorsunuz?")
+                            .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String uuid = getRecordId(clickedCardPosition);
+                                    UserActivity record = new UserActivity();
+                                    record.deleteRecord(uuid);
+                                }
+                            })
+                            .setNegativeButton("Hayır", null)
+                            .show();
                 }
             });
             copyPassword.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +107,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
                 public void onClick(View v) {
                     String uuid = getRecordId(clickedCardPosition);
                     Intent intent = new Intent(itemView.getContext(), UpdateRecord.class);
-                    intent.putExtra("recordId",uuid);
+                    intent.putExtra("recordId", uuid);
                     itemView.getContext().startActivity(intent);
                 }
             });
