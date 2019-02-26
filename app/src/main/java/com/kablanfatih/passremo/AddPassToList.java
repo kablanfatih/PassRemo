@@ -11,9 +11,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.tinmegali.security.mcipher.MEncryptor;
-import com.tinmegali.security.mcipher.MEncryptorBuilder;
-import com.tinmegali.security.mcipher.exceptions.MEncryptorException;
 
 import java.util.Objects;
 
@@ -21,10 +18,10 @@ public class AddPassToList extends AppCompatActivity {
 
     Button savePassword, backList;
     EditText adress, username, password;
-    private FirebaseAuth mAuth;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    MEncryptor encryptor;
+    EncryptionService encryptionService;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,21 +33,23 @@ public class AddPassToList extends AppCompatActivity {
 
     public void init() {
 
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
+        user = mAuth.getCurrentUser();
         savePassword = (Button) findViewById(R.id.savepassword);
         backList = (Button) findViewById(R.id.backlist);
         adress = (EditText) findViewById(R.id.adress);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
+        encryptionService = new EncryptionService();
 
         savePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     writeInfoToDatabase();
-                } catch (MEncryptorException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -64,18 +63,13 @@ public class AddPassToList extends AppCompatActivity {
         });
     }
 
-    public void writeInfoToDatabase() throws MEncryptorException {
+    public void writeInfoToDatabase() throws Exception {
 
-        String ALIAS = "0https4://08digital-9transltr82firebaseio.0com/";
-        encryptor = new MEncryptorBuilder(ALIAS).build();
         String getPassword = password.getText().toString();
-        String encryptedPassword = encryptor.encryptString(getPassword, this);
+        String userEmail = Objects.requireNonNull(user).getEmail();
+        String encryptedPassword = encryptionService.encrypt(getPassword,userEmail);
 
         String recordId = myRef.push().getKey();
-        FirebaseUser user = mAuth.getCurrentUser();
-        assert user != null;
-        String userEmail = user.getEmail();
-        database = FirebaseDatabase.getInstance();
         myRef = database.getReference("Records").child(user.getUid());
         ListPassword listPassword = new ListPassword();
         listPassword.setRecordId(recordId);
@@ -84,7 +78,7 @@ public class AddPassToList extends AppCompatActivity {
         listPassword.setName(username.getText().toString());
         listPassword.setPassword(encryptedPassword);
 
-        if (!listPassword.getTitle().isEmpty() && !listPassword.getName().isEmpty() && !encryptedPassword.isEmpty()) {
+        if (!listPassword.getTitle().isEmpty() && !listPassword.getName().isEmpty() && !password.getText().toString().isEmpty()) {
 
             myRef.child(Objects.requireNonNull(recordId)).setValue(listPassword);
 
