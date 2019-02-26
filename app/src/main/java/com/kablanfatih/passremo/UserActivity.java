@@ -181,8 +181,6 @@ public class UserActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Toast.makeText(getApplicationContext(), "Hata Oluştu Lütfen Tekrar Deneyiniz", Toast.LENGTH_LONG).show();
             }
         });
     }
