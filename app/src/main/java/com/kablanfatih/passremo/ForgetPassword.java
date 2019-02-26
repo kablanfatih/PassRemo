@@ -37,7 +37,7 @@ public class ForgetPassword extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(mail)) {
 
-                    Toast.makeText(getApplicationContext(), "Lütfen Mail Adresinizi Giriniz", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen Mail Adresinizi Giriniz", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -47,7 +47,7 @@ public class ForgetPassword extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
 
-                            Toast.makeText(getApplicationContext(), "Parola Sıfırlama Maili Gönderildi", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Parola Sıfırlama Maili Gönderildi", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(ForgetPassword.this, SignIn.class);
                             startActivity(intent);

@@ -63,14 +63,14 @@ public class SignUp extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
-                    Toast.makeText(SignUp.this, "Kayıt Başarılı", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUp.this, "Kayıt Başarılı", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUp.this, SignIn.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(intent);
 
 
                 } else {
-                    Toast.makeText(SignUp.this, "HATA OLUŞTU", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUp.this, "HATA OLUŞTU", Toast.LENGTH_SHORT).show();
                 }
             }
         });

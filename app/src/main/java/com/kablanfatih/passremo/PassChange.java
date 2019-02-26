@@ -70,7 +70,7 @@ public class PassChange extends AppCompatActivity {
                     finish();
                     Toast.makeText(getApplicationContext(), "Şifreniz Değiştirilmiştir", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Lütfen En Az 6 Haneli Bir Şifre Girin", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen En Az 6 Haneli Bir Şifre Girin", Toast.LENGTH_SHORT).show();
                 }
             }
         });

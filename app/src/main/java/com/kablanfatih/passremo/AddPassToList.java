@@ -82,13 +82,13 @@ public class AddPassToList extends AppCompatActivity {
 
             myRef.child(Objects.requireNonNull(recordId)).setValue(listPassword);
 
-            Toast.makeText(getApplicationContext(), "Parolanız Listenize Eklenmiştir", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Parolanız Listenize Eklenmiştir", Toast.LENGTH_SHORT).show();
             adress.setText("");
             username.setText("");
             password.setText("");
 
         } else {
-            Toast.makeText(getApplicationContext(), "Lütfen Boşlukları Doldurunuz", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Lütfen Boşlukları Doldurunuz", Toast.LENGTH_SHORT).show();
         }
     }
 }
