@@ -14,12 +14,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="125dp"
-        android:background="#ECD672"
+        android:background="@drawable/button_shape"
         android:text="Vazgeç"
-        android:textColor="#348781"
+        android:textColor="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="29dp"
+        android:background="@drawable/button_shape"
+        android:text="Kayıt Ol"
+        android:textColor="#000"
+        app:layout_constraintBottom_toTopOf="@+id/back"
+        app:layout_constraintStart_toStartOf="@+id/back" />
 
     <EditText
         android:id="@+id/gmail"
@@ -29,8 +40,9 @@
         android:ems="10"
         android:hint="E-Posta"
         android:inputType="textEmailAddress"
-        android:textColor="#ffff"
-        android:textColorHint="#ffff"
+        android:textColor="#f8f8ff"
+        android:textColorHint="#f8f8ff"
+        android:background="@drawable/button_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -45,21 +57,11 @@
         android:ems="10"
         android:hint="Parola"
         android:inputType="textPassword"
-        android:textColor="#ffff"
-        android:textColorHint="#ffff"
+        android:textColor="#f8f8ff"
+        android:textColorHint="#f8f8ff"
+        android:background="@drawable/button_shape"
         app:layout_constraintEnd_toEndOf="@+id/gmail"
         app:layout_constraintTop_toBottomOf="@+id/gmail" />
-
-    <Button
-        android:id="@+id/signUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="29dp"
-        android:background="#ECD672"
-        android:text="Kayıt Ol"
-        android:textColor="#348781"
-        app:layout_constraintBottom_toTopOf="@+id/back"
-        app:layout_constraintStart_toStartOf="@+id/back" />
 
     <TextView
         android:id="@+id/textView5"
@@ -67,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
         android:text="KAYIT SAYFASI"
-        android:textColor="#ffff"
+        android:textColor="#f8f8ff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

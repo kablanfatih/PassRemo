@@ -13,9 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:background="#ECD672"
+        android:background="@drawable/button_shape"
         android:text="Vazgeç"
-        android:textColor="#348781"
+        android:textColor="#000"
         app:layout_constraintStart_toStartOf="@+id/password_confirm"
         app:layout_constraintTop_toBottomOf="@+id/password_confirm" />
 
@@ -27,8 +27,9 @@
         android:ems="10"
         android:hint="Yeni Parola"
         android:inputType="textPassword"
-        android:textColor="#ffff"
-        android:textColorHint="#ffff"
+        android:textColor="#f8f8ff"
+        android:textColorHint="#f8f8ff"
+        android:background="@drawable/button_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,9 +39,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="51dp"
-        android:background="#ECD672"
+        android:background="@drawable/button_shape"
         android:text="Onayla"
-        android:textColor="#348781"
+        android:textColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pass_new" />
@@ -51,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
         android:text="Şifre Değiştirme Sayfası"
-        android:textColor="#ffff"
+        android:textColor="#f8f8ff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
