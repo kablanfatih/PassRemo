@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECD672"
+    android:background="#008b00"
     android:orientation="vertical"
     tools:context=".PassChange"
     tools:layout_editor_absoluteY="25dp">
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:text="Parola Ekleme Sayfası"
-        android:textColor="#348781"
+        android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,8 +30,8 @@
         android:ems="10"
         android:hint="Adres"
         android:inputType="text"
-        android:textColor="#348781"
-        android:textColorHint="#348781"
+        android:textColor="#ffff"
+        android:textColorHint="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,8 +44,8 @@
         android:ems="10"
         android:hint="Kullanıcı Adı"
         android:inputType="text"
-        android:textColor="#348781"
-        android:textColorHint="#348781"
+        android:textColor="#ffff"
+        android:textColorHint="#ffff"
         app:layout_constraintStart_toStartOf="@+id/adress"
         app:layout_constraintTop_toBottomOf="@+id/adress" />
 
@@ -57,8 +57,8 @@
         android:ems="10"
         android:hint="Parola"
         android:inputType="textPassword"
-        android:textColor="#348781"
-        android:textColorHint="#348781"
+        android:textColor="#ffff"
+        android:textColorHint="#ffff"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
