@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECD672"
+    android:background="#008b00"
     tools:context=".UserActivity"
     tools:layout_editor_absoluteY="25dp">
 
@@ -29,7 +29,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="61dp"
         android:src="@drawable/plus"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="#ffe413"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
