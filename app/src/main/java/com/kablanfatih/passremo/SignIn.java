@@ -38,39 +38,6 @@ public class SignIn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         define();
-
-        signIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String emailText = email.getText().toString();
-                email.setText("");
-                String passwordText = password.getText().toString();
-                password.setText("");
-
-                if (!emailText.equals("") && !passwordText.equals("")) {
-                    signIn(emailText, passwordText);
-                }
-            }
-        });
-
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SignIn.this, SignUp.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        forgetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SignIn.this, ForgetPassword.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 
     private void signIn(final String email, final String password) {
@@ -118,5 +85,45 @@ public class SignIn extends AppCompatActivity {
             password.setText(loginPreferences.getString("password", ""));
             rememberMe.setChecked(true);
         }
+
+       signIn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               String emailText = email.getText().toString();
+               email.setText("");
+               String passwordText = password.getText().toString();
+               password.setText("");
+
+               if (!emailText.equals("") && !passwordText.equals("")) {
+                   signIn(emailText, passwordText);
+               }
+           }
+       });
+
+       register.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(SignIn.this, SignUp.class);
+               intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+               startActivity(intent);
+               finish();
+           }
+       });
+
+       forgetPassword.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(SignIn.this, ForgetPassword.class);
+               startActivity(intent);
+               finish();
+           }
+       });
+
+       back.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               finish();
+           }
+       });
     }
 }
