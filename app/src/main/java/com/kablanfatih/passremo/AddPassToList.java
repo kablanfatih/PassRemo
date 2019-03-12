@@ -12,8 +12,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Objects;
-
 public class AddPassToList extends AppCompatActivity {
 
     Button savePassword, backList;
@@ -66,7 +64,7 @@ public class AddPassToList extends AppCompatActivity {
     public void writeInfoToDatabase() throws Exception {
 
         String getPassword = password.getText().toString();
-        String userEmail = Objects.requireNonNull(user).getEmail();
+        String userEmail = user.getEmail();
         String encryptedPassword = encryptionService.encrypt(getPassword,userEmail);
 
         String recordId = myRef.push().getKey();
@@ -80,7 +78,8 @@ public class AddPassToList extends AppCompatActivity {
 
         if (!listPassword.getTitle().isEmpty() && !listPassword.getName().isEmpty() && !password.getText().toString().isEmpty()) {
 
-            myRef.child(Objects.requireNonNull(recordId)).setValue(listPassword);
+            assert recordId != null;
+            myRef.child(recordId).setValue(listPassword);
 
             Toast.makeText(getApplicationContext(), "Parolanız Listenize Eklenmiştir", Toast.LENGTH_SHORT).show();
             adress.setText("");

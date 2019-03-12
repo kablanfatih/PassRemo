@@ -14,8 +14,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Objects;
-
 public class UpdateRecord extends AppCompatActivity {
 
     FirebaseUser user;
@@ -47,7 +45,8 @@ public class UpdateRecord extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Bundle extras = getIntent().getExtras();
-                String recordId = Objects.requireNonNull(extras).getString("recordId");
+                assert extras != null;
+                String recordId = extras.getString("recordId");
                 changePasswordToDatabase(recordId);
             }
         });

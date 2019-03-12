@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_shape"
-        android:text="Onayla"
+        android:text="Kaydet"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="43dp"
         android:background="@drawable/button_shape"
-        android:text="Vazgeç"
+        android:text="Geri Dön"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="@+id/savepassword"
         app:layout_constraintTop_toBottomOf="@+id/savepassword" />
