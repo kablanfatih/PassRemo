@@ -5,71 +5,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#008b00"
-    tools:context=".SignUp"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context=".SignUp">
 
 
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="125dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
         android:background="@drawable/button_shape"
         android:text="Vazgeç"
-        android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="@+id/signUp"
+        app:layout_constraintTop_toBottomOf="@+id/signUp" />
 
     <Button
         android:id="@+id/signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="29dp"
+        android:layout_marginTop="26dp"
         android:background="@drawable/button_shape"
         android:text="Kayıt Ol"
-        android:textColor="#000"
-        app:layout_constraintBottom_toTopOf="@+id/back"
-        app:layout_constraintStart_toStartOf="@+id/back" />
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <EditText
         android:id="@+id/gmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/button_shape"
         android:ems="10"
         android:hint="E-Posta"
         android:inputType="textEmailAddress"
         android:textColor="#f8f8ff"
         android:textColorHint="#f8f8ff"
-        android:background="@drawable/button_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toTopOf="parent" />" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="29dp"
+        android:background="@drawable/button_shape"
         android:ems="10"
         android:hint="Parola"
         android:inputType="textPassword"
         android:textColor="#f8f8ff"
         android:textColorHint="#f8f8ff"
-        android:background="@drawable/button_shape"
-        app:layout_constraintEnd_toEndOf="@+id/gmail"
+        app:layout_constraintStart_toStartOf="@+id/gmail"
         app:layout_constraintTop_toBottomOf="@+id/gmail" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginStart="146dp"
+        android:layout_marginLeft="146dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginRight="168dp"
+        android:layout_marginBottom="97dp"
         android:text="KAYIT SAYFASI"
         android:textColor="#f8f8ff"
+        app:layout_constraintBottom_toTopOf="@+id/gmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

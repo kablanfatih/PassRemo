@@ -15,7 +15,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -66,6 +64,7 @@ public class UserActivity extends AppCompatActivity {
         addButton = (FloatingActionButton) findViewById(R.id.addButton);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         encryptionService = new EncryptionService();
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -160,7 +159,8 @@ public class UserActivity extends AppCompatActivity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ListPassword getRecord = ds.getValue(ListPassword.class);
 
-                    String password = Objects.requireNonNull(getRecord).getPassword();
+                    assert getRecord != null;
+                    String password = getRecord.getPassword();
 
                     String decrypted = null;
                     try {
