@@ -3,13 +3,25 @@
     package="com.kablanfatih.passremo">
 
     <application
+        android:fullBackupContent="true"
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo"
+        android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateRecord"></activity>
+        <activity android:name=".UpdateRecord">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="com.kablanfatih.passremo" />
+            </intent-filter>
+        </activity>
         <activity android:name=".AddPassToList" />
         <activity android:name=".SignIn">
             <intent-filter>
