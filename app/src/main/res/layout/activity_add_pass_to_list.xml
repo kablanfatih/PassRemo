@@ -4,12 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#008b00"
+    android:background="@color/design_default_color_primary"
     android:orientation="vertical"
     tools:context=".PassChange"
     tools:layout_editor_absoluteY="25dp">
-
-
 
     <TextView
         android:id="@+id/textView3"
@@ -30,8 +28,8 @@
         android:ems="10"
         android:hint="Adres"
         android:inputType="text"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_pressed"
         android:background="@drawable/button_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +43,8 @@
         android:ems="10"
         android:hint="Kullanıcı Adı"
         android:inputType="text"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_pressed"
         android:background="@drawable/button_shape"
         app:layout_constraintStart_toStartOf="@+id/adress"
         app:layout_constraintTop_toBottomOf="@+id/adress" />
@@ -59,8 +57,8 @@
         android:ems="10"
         android:hint="Parola"
         android:inputType="textPassword"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_pressed"
         android:background="@drawable/button_shape"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/username" />
@@ -72,7 +70,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/button_shape"
         android:text="Kaydet"
-        android:textColor="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -84,7 +82,7 @@
         android:layout_marginTop="43dp"
         android:background="@drawable/button_shape"
         android:text="Geri Dön"
-        android:textColor="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintStart_toStartOf="@+id/savepassword"
         app:layout_constraintTop_toBottomOf="@+id/savepassword" />
 

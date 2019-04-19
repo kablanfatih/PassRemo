@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#008b00"
+    android:background="@color/design_default_color_primary"
     tools:context=".UpdateRecord">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
         android:text="Parola Güncelleme Sayfası"
-        android:textColor="#f8f8ff"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,7 @@
         android:layout_marginTop="48dp"
         android:background="@drawable/button_shape"
         android:text="Vazgeç"
-        android:textColor="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintStart_toStartOf="@+id/password_confirm"
         app:layout_constraintTop_toBottomOf="@+id/password_confirm" />
 
@@ -36,7 +36,7 @@
         android:layout_marginTop="51dp"
         android:background="@drawable/button_shape"
         android:text="Onayla"
-        android:textColor="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_password" />
@@ -49,8 +49,8 @@
         android:ems="10"
         android:hint="Yeni Parola"
         android:inputType="textPassword"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_pressed"
         android:background="@drawable/button_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
