@@ -4,29 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#008b00"
+    android:background="@color/design_default_color_primary"
     android:orientation="vertical"
-    tools:context=".SignIn"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context=".SignIn">
 
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="44dp"
         android:background="@drawable/button_shape"
         android:text="Çıkış"
-        android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        app:layout_constraintStart_toStartOf="@+id/forgetPassword"
+        app:layout_constraintTop_toBottomOf="@+id/forgetPassword" />
 
     <TextView
         android:id="@+id/forgetPassword"
         style="@style/Widget.AppCompat.TextView.SpinnerItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="35dp"
         android:text="Şİfreni mi Unuttun?"
         android:textColor="#f8f8ff"
         android:textSize="15sp"
@@ -34,86 +34,68 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:lineSpacingExtra="30sp"
-        android:text="PassRemo"
-        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        android:typeface="serif"
-        app:layout_constraintBottom_toTopOf="@+id/userEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/userEmail"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="29dp"
+        android:layout_marginTop="56dp"
         android:hint="E-Posta"
         android:inputType="textEmailAddress"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:background="@drawable/button_shape"
-        app:layout_constraintBottom_toTopOf="@+id/userPass"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/userPass"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
+        android:layout_marginTop="32dp"
         android:hint="Parola"
         android:inputType="textPassword"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:background="@drawable/button_shape"
-        app:layout_constraintBottom_toTopOf="@+id/rememberMe"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userEmail" />
 
     <Button
         android:id="@+id/signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
         android:background="@drawable/button_shape"
         android:text="Giriş"
-        android:textColor="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        app:layout_constraintEnd_toEndOf="@+id/rememberMe"
+        app:layout_constraintTop_toBottomOf="@+id/rememberMe" />
 
     <CheckBox
         android:id="@+id/rememberMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button_shape"
+        android:layout_marginTop="35dp"
         android:shadowColor="#ffffff"
-        android:text="Beni Hatırla  "
-        android:textColor="#000"
+        android:text="Beni Hatırla"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         android:textColorHighlight="#008b00"
-        android:textColorLink="#008b00"
         android:textColorHint="#008b00"
-        app:layout_constraintBottom_toTopOf="@+id/signin"
-        app:layout_constraintEnd_toEndOf="@+id/signin" />
+        android:textColorLink="#008b00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userPass" />
 
     <TextView
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Kayıt Ol"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="18dp"
+        android:text="Kayıt Ol "
         android:textColor="#ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/signin"
         app:layout_constraintTop_toBottomOf="@+id/signin" />
 
 </android.support.constraint.ConstraintLayout>

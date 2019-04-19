@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#008b00"
+    android:background="@color/design_default_color_primary"
     tools:context=".SignUp">
 
 
@@ -17,7 +17,7 @@
         android:layout_marginRight="1dp"
         android:background="@drawable/button_shape"
         android:text="Vazgeç"
-        android:textColor="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintEnd_toEndOf="@+id/signUp"
         app:layout_constraintTop_toBottomOf="@+id/signUp" />
 
@@ -28,7 +28,7 @@
         android:layout_marginTop="26dp"
         android:background="@drawable/button_shape"
         android:text="Kayıt Ol"
-        android:textColor="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -42,8 +42,8 @@
         android:ems="10"
         android:hint="E-Posta"
         android:inputType="textEmailAddress"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,8 +57,8 @@
         android:ems="10"
         android:hint="Parola"
         android:inputType="textPassword"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintStart_toStartOf="@+id/gmail"
         app:layout_constraintTop_toBottomOf="@+id/gmail" />
 
